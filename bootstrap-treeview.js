@@ -138,9 +138,7 @@
 			// 删除節點方法
 			deleteNode: $.proxy(this.deleteNode, this),
 			deleteChildrenNode: $.proxy(this.deleteChildrenNode, this),
-			//更新節點
-			modifyNode: $.proxy(this.modifyNode, this),
-
+			
 			// Disable / enable methods
 			disableAll: $.proxy(this.disableAll, this),
 			disableNode: $.proxy(this.disableNode, this),
@@ -1073,28 +1071,7 @@
 			}
 		}, this));
 	};
-	/**
-	 * 編輯節點 text
-	 * @param node
-	 * @param options
-	 */
-	Tree.prototype.modifyNode = function (identifiers, options) {
-		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
-			this.setModifyNode(node, options);
-		}, this));
-
-		this.setInitialStates({ nodes: this.tree }, 0);
-		this.render();
-	}
-
-	Tree.prototype.setModifyNode = function (node, options) {
-		/*若當前要插入子節點的父節點没有任何子節點，則將[]賦给父節點，
-		  否則node.nodes會出現undefined的錯誤*/
-		if (node.text != null) {
-			node.text = options.text;
-		}
-	};
-
+	
 
 	/**
 		Disable all tree nodes
